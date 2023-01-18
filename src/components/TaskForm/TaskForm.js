@@ -1,14 +1,17 @@
-import { Button } from 'components/Button/Button';
-import css from './TaskForm.module.css';
 // Імпортуємо хук
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
+import { Button } from 'components/Button/Button';
 // Імпортуємо генератор екшену
-import { addTask } from "../../redux/actions";
+// import { addTask } from '../../redux/actions';
+import { addTask } from 'redux/tasksSlice';
+import css from './TaskForm.module.css';
+
+
 
 export const TaskForm = () => {
   // Отримуємо посилання на функцію відправки екшенів
   const dispatch = useDispatch();
-  
+
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
