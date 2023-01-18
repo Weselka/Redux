@@ -1,7 +1,7 @@
 // (state, action) => nextState;
 //createReducer(initialState, actionsMap)
 
-import { statusFilters } from './constants';
+// import { statusFilters } from './constants';
 // // Імпортуємо функцію композиції редюсерів
 // import { combineReducers } from "redux";
 
@@ -18,44 +18,81 @@ import { statusFilters } from './constants';
 //   },
 // };
 
-import { addTask, deleteTask, toggleCompleted, setStatusFilter } from './actions';
-import { createReducer } from '@reduxjs/toolkit';
+// import { addTask, deleteTask, toggleCompleted, setStatusFilter } from './actions';
+// import { createReducer } from '@reduxjs/toolkit';
+// import { createSlice } from '@reduxjs/toolkit';
 
-const tasksInitialState = [
-  { id: 0, text: 'Learn HTML and CSS', completed: true },
-  { id: 1, text: 'Get good at JavaScript', completed: true },
-  { id: 2, text: 'Master React', completed: false },
-  { id: 3, text: 'Discover Redux', completed: false },
-  { id: 4, text: 'Build amazing apps', completed: false },
-];
+// const tasksInitialState = [
+//   { id: 0, text: 'Learn HTML and CSS', completed: true },
+//   { id: 1, text: 'Get good at JavaScript', completed: true },
+//   { id: 2, text: 'Master React', completed: false },
+//   { id: 3, text: 'Discover Redux', completed: false },
+//   { id: 4, text: 'Build amazing apps', completed: false },
+// ];
 
-export const tasksReducer = createReducer(tasksInitialState, {
-  [addTask]: (state, action) => {
-    // return [...state, action.payload];
-    state.push(action.payload);
-  },
-  [deleteTask]: (state, action) => {
-    // return state.filter(task => task.id !== action.payload);
-    const index = state.findIndex(task => task.id === action.payload);
-    state.splice(index, 1);
-  },
-  [toggleCompleted]: (state, action) => {
-    //  return state.map(task => {
-    //    if (task.id !== action.payload) {
-    //      return task;
-    //    }
-    //    return {
-    //      ...task,
-    //      completed: !task.completed,
-    //    };
-    //  });
-    for (const task of state) {
-      if (task.id === action.payload) {
-        task.completed = !task.completed;
-      }
-    }
-  },
-});
+// const tasksSlice = createSlice({
+//   name: 'tasks',
+//   initialState: tasksInitialState,
+//   reducers: {
+//     addTask: {
+//       reducer(state, action) {
+//         state.push(action.payload);
+//       },
+//       prepare(text) {
+//         return {
+//           payload: {
+//             text,
+//             id: nanoid(),
+//             completed: false,
+//           },
+//         };
+//       },
+//     },
+//     deleteTask(state, action) {
+//       const index = state.findIndex(task => task.id === action.payload);
+//       state.splice(index, 1);
+//     },
+//     toggleCompleted(state, action) {
+//       for (const task of state) {
+//         if (task.id === action.payload) {
+//           task.completed = !task.completed;
+//           break;
+//         }
+//       }
+//     },
+//   },
+// });
+
+// const { addTask, deleteTask, toggleCompleted } = tasksSlice.actions;
+// export const tasksReducer = tasksSlice.reducer;
+
+// export const tasksReducer = createReducer(tasksInitialState, {
+//   [addTask]: (state, action) => {
+//     // return [...state, action.payload];
+//     state.push(action.payload);
+//   },
+//   [deleteTask]: (state, action) => {
+//     // return state.filter(task => task.id !== action.payload);
+//     const index = state.findIndex(task => task.id === action.payload);
+//     state.splice(index, 1);
+//   },
+//   [toggleCompleted]: (state, action) => {
+//     //  return state.map(task => {
+//     //    if (task.id !== action.payload) {
+//     //      return task;
+//     //    }
+//     //    return {
+//     //      ...task,
+//     //      completed: !task.completed,
+//     //    };
+//     //  });
+//     for (const task of state) {
+//       if (task.id === action.payload) {
+//         task.completed = !task.completed;
+//       }
+//     }
+//   },
+// });
 
 // Відповідає лише за оновлення властивості tasks
 // Тепер значенням параметра state буде масив завдань
@@ -80,19 +117,32 @@ export const tasksReducer = createReducer(tasksInitialState, {
 //   }
 // };
 
-const filtersInitialState = {
-  status: statusFilters.all,
-};
+// const filtersInitialState = {
+//   status: statusFilters.all,
+// };
 
-export const filtersReducer = createReducer(filtersInitialState, {
-  [setStatusFilter]: (state, action) => {
-    // return {
-    //   ...state,
-    //   status: action.payload,
-    // };
-    state.status = action.payload;
-  },
-});
+// const filtersSlice = createSlice({
+//   name: 'filters',
+//   initialState: filtersInitialState,
+//   reducers: {
+//     setStatusFilter(state, action) {
+//       state.status = action.payload;
+//     },
+//   },
+// });
+// // Експортуємо генератори екшенів та редюсер
+// export const { setStatusFilter } = filtersSlice.actions;
+// export const filtersReducer = filtersSlice.reducer;
+
+// export const filtersReducer = createReducer(filtersInitialState, {
+//   [setStatusFilter]: (state, action) => {
+//     // return {
+//     //   ...state,
+//     //   status: action.payload,
+//     // };
+//     state.status = action.payload;
+//   },
+// });
 
 // Відповідає лише за оновлення властивості filters
 // Тепер значенням параметра state буде об'єкт фільтрів

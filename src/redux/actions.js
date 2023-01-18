@@ -14,19 +14,20 @@
 //createAction(type, prepareAction)
 
 //=============== After ========================
-import { createAction, nanoid } from '@reduxjs/toolkit';
+// import { createAction, nanoid } from '@reduxjs/toolkit';
+// import { deleteTask, toggleCompleted } from 'redux/tasksSlice';
 
-export const addTask = createAction('tasks/AddTask', text => {
-  return {
-    payload: {
-      text,
-      id: nanoid(),
-      completed: false,
-    },
-  };
-});
+// export const addTask = createAction('tasks/AddTask', text => {
+//   return {
+//     payload: {
+//       text,
+//       id: nanoid(),
+//       completed: false,
+//     },
+//   };
+// });
 
-console.log(addTask('Learn Redux Toolkit')); // {type: "tasks/addTask", payload: "Learn Redux Toolkit"}
+// console.log(addTask('Learn Redux Toolkit')); // {type: "tasks/addTask", payload: "Learn Redux Toolkit"}
 
 // export const addTask = text => {
 //   return {
@@ -48,7 +49,7 @@ console.log(addTask('Learn Redux Toolkit')); // {type: "tasks/addTask", payload:
 //   },
 // };
 
-export const deleteTask = createAction('tasks/deleteTask');
+// export const deleteTask = createAction('tasks/deleteTask');
 
 // export const deleteTask = taskId => {
 //   return {
@@ -62,7 +63,7 @@ export const deleteTask = createAction('tasks/deleteTask');
 //   payload: 'Task id',
 // };
 
-export const toggleCompleted = createAction('tasks/toggleCompleted');
+// export const toggleCompleted = createAction('tasks/toggleCompleted');
 
 // export const toggleCompleted = taskId => {
 //   return {
@@ -76,7 +77,7 @@ export const toggleCompleted = createAction('tasks/toggleCompleted');
 //   payload: 'Task id',
 // };
 
-export const setStatusFilter = createAction('filters/setStatusFilter');
+// export const setStatusFilter = createAction('filters/setStatusFilter');
 
 // export const setStatusFilter = value => {
 //   return {
