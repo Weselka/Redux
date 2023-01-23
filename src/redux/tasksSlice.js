@@ -8,38 +8,63 @@ const tasksInitialState = [
   { id: 4, text: 'Build amazing apps', completed: false },
 ];
 
-const tasksSlice = createSlice({
+const tasksSlice = {
   name: 'tasks',
-  initialState: tasksInitialState,
+  initialState: {
+    items: tasksInitialState,
+    isLoading: false,
+    error: null,
+  },
   reducers: {
-    addTask: {
-      reducer(state, action) {
-        state.push(action.payload);
-      },
-      prepare(text) {
-        return {
-          payload: {
-            text,
-            id: nanoid(),
-            completed: false,
-          },
-        };
-      },
+    fetchingInProgress(state) {
+      state.isLoading = true;
     },
-    deleteTask(state, action) {
-      const index = state.findIndex(task => task.id === action.payload);
-      state.splice(index, 1);
+    fetchingSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
     },
-    toggleCompleted(state, action) {
-      for (const task of state) {
-        if (task.id === action.payload) {
-          task.completed = !task.completed;
-          break;
-        }
-      }
+    fetchingError(state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
-});
+};
+export const { fetchingInProgress, fetchingSuccess, fetchingError } =
+  tasksSlice.actions;
 
-export const { addTask, deleteTask, toggleCompleted } = tasksSlice.actions;
-export const tasksReducer = tasksSlice.reducer;
+// const tasksSlice = createSlice({
+//   name: 'tasks',
+//   initialState: tasksInitialState,
+//   reducers: {
+//     addTask: {
+//       reducer(state, action) {
+//         state.push(action.payload);
+//       },
+//       prepare(text) {
+//         return {
+//           payload: {
+//             text,
+//             id: nanoid(),
+//             completed: false,
+//           },
+//         };
+//       },
+//     },
+//     deleteTask(state, action) {
+//       const index = state.findIndex(task => task.id === action.payload);
+//       state.splice(index, 1);
+//     },
+//     toggleCompleted(state, action) {
+//       for (const task of state) {
+//         if (task.id === action.payload) {
+//           task.completed = !task.completed;
+//           break;
+//         }
+//       }
+//     },
+//   },
+// });
+
+// export const { addTask, deleteTask, toggleCompleted } = tasksSlice.actions;
+// export const tasksReducer = tasksSlice.reducer;
