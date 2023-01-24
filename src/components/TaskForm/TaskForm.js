@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Button } from 'components/Button/Button';
 // Імпортуємо генератор екшену
 // import { addTask } from '../../redux/actions';
-import { addTask } from 'redux/tasksSlice';
+// import { addTask } from 'redux/tasksSlice';
+import { addTask } from 'redux/operations';
+// import { deleteTask, toggleCompleted } from 'redux/operations';
 import css from './TaskForm.module.css';
 
 
@@ -31,3 +33,18 @@ export const TaskForm = () => {
     </form>
   );
 };
+
+// export const Task = ({ task }) => {
+//   const dispatch = useDispatch();
+//   const handleDelete = () => dispatch(deleteTask(task.id));
+//   const handleToggle = () => dispatch(toggleCompleted(task));
+//   return (
+//     <div>
+//       <input type="checkbox" checked={task.completed} onChange={handleToggle} />
+//       <p>{task.text}</p>
+//       <button onClick={handleDelete}>
+//         <MdClose size={24} />
+//       </button>
+//     </div>
+//   );
+// };

@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { MdClose } from 'react-icons/md';
 // Імпортуємо генератор екшену
 // import { deleteTask, toggleCompleted } from '../../redux/actions';
-import { deleteTask, toggleCompleted } from 'redux/tasksSlice';
+// import { deleteTask, toggleCompleted } from 'redux/tasksSlice';
+import { deleteTask, toggleCompleted } from 'redux/operations';
+
 import css from './Task.module.css';
 
 
@@ -16,9 +18,16 @@ export const Task = ({ task }) => {
   const handleDelete = () => dispatch(deleteTask(task.id));
   // Викликаємо генератор екшену та передаємо ідентифікатор завдання
   // Відправляємо результат - екшен перемикання статусу завдання
-  const handleToggle = () => dispatch(toggleCompleted(task.id));
+  const handleToggle = () => dispatch(toggleCompleted(task));
 
   return (
+    // <div>
+    //   <input type="checkbox" checked={task.completed} />
+    //   <p>{task.text}</p>
+    //   <button onClick={handleDelete}>
+    //     <MdClose size={24} />
+    //   </button>
+    // </div>
     <div className={css.wrapper}>
       <input
         type="checkbox"
